@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-/bin/
 
 # Ignore all environment files (except templates).
 /.env*
