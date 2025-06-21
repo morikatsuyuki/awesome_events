@@ -5,7 +5,23 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 # CSRF対策
-OmniAuth.config.allowed_request_methods = [:post, :get] 
+# OmniAuth.config.allowed_request_methods = [:post, :get] 
+# :getを許可した場合、WARN警告がでる。
+# OmniAuthは「デフォルトでPOSTリクエストのみ」を許可するようになっているが、なぜかGETでリクエストして下記の警告が出てしまう。。2025/06/19
+  # WARN -- omniauth: (github)   You are using GET as an allowed request method for OmniAuth. This may leave
+  # you open to CSRF attacks. As of v2.0.0, OmniAuth by default allows only POST
+  # to its own routes. You should review the following resources to guide your
+  # mitigation:
+  # https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
+  # https://github.com/omniauth/omniauth/issues/960
+  # https://nvd.nist.gov/vuln/detail/CVE-2015-9284
+  # https://github.com/omniauth/omniauth/pull/809
+# 上記の警告は、OmniAuthがGETリクエストを許可しているため、CSRF攻撃に対して脆弱であることを示しています
+# OmniAuthは「デフォルトでPOSTリクエストのみ」を許可するようになっており、GETリクエストを許可することはセキュリティ上のリスクを高めます
+
+# OmniAuth.config.allowed_request_methods = [:post]   
+
+
 # OmniAuthが受け付けるHTTPリクエストメソッドを制限する設定です。この設定が必要な理由は以下の通りです：
 # 1. セキュリティ上の理由:
 # デフォルトでは、OmniAuthはすべてのHTTPメソッド（GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD）を受け付けます
