@@ -15,10 +15,14 @@
       .container
         = link_to('AwesomeEvents', root_path, class: 'navbar-brand')
         %ul.navbar-nav
-          %li.nav-item
-            = link_to "GitHubでログイン", "/auth/github", class: 'nav-link', method: :post
-            -# = link_to "UJS確認（確認ダイアログ）", "#", data: { confirm: "UJSが動いていますか？" }
-            -# ダイアログが出ない場合、Rails UJS（Unobtrusive JavaScript）が正しく読み込まれていない可能性
+          - if logged_in?
+            %li.nav-item
+              = link_to "ログアウト", logout_path, class: 'nav-link', method: :delete
+          - else
+            %li.nav-item
+              = link_to "GitHubでログイン", "/auth/github", class: 'nav-link', method: :post
+              -# = link_to "UJS確認（確認ダイアログ）", "#", data: { confirm: "UJSが動いていますか？" }
+              -# ダイアログが出ない場合、Rails UJS（Unobtrusive JavaScript）が正しく読み込まれていない可能性
     .container
       - if flash[:notice]
         .alert.alert-success

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "welcome#index"
   get "auth/:provider/callback", to: "sessions#create" #, as: :auth_callback
+  delete "logout", to: "sessions#destroy"
+
   # :providerは認証プロバイダーの名前（例: github）を示します
   # asはルーティングヘルパーの名前を指定します
   
