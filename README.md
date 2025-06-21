@@ -17,8 +17,9 @@ cd awesome_events && rails s
     text-align: center;
     padding: 9px 0;
     animation: flashShadow 2.5s infinite alternate;
+    color: black:
     ">
   <img src="https://m.media-amazon.com/images/I/81yskupyNhL._SY342_.jpg" 
-    alt="パーフェクトRubyonRails" style="border:none;width:110px;" /><script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'G-CJF3K99R7P');</script><br />
+    alt="パーフェクトRubyonRails" style="border:none;width:110px;" /><br />
   パーフェクトRubyonRails | Amazon
 </a>
